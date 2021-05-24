@@ -16,7 +16,7 @@ class Network {
   
   
   JSONObject getState() {
-    GetRequest getRequest = new (url + "getState");
+    GetRequest getRequest = new GetRequest(url + "getState");
     getRequest.send();
     
     jsonResponse = parseJSONObject(getRequest.getContent());
