@@ -5,6 +5,9 @@ class Lamp {
   
   float r = 0, g = 0, b = 0;
   
+  int id;
+  
+  
   int intensity = 0;
   
   boolean on = false;

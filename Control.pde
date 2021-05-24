@@ -6,4 +6,15 @@ class Control {
   
   }
 
+
+  void updateData() {
+    JSONObject state = network.getState();
+    
+   
+   
+    
+    
+    
+  }
+
 }
