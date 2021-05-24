@@ -1,7 +1,7 @@
 class Room {
 
   ArrayList<Lamp> lights;
-  
+  int id;
   Room() {
    lights = new ArrayList<Lamp>();
   }
