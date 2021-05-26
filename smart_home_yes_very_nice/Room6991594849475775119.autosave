@@ -1,0 +1,8 @@
+class Room{
+  
+  void draw(){
+    fill(255);
+    rect(600,100,100,100);
+  }
+  
+}
