@@ -1,17 +1,25 @@
 class Lamp {
 
   float x, y;
-  float r = 255, g = 255, b = 0;
+
+  int r = 0, g = 0, b = 0;
+
   int id;
   int intensity = 0;
   boolean on = false;
   
-  Lamp(float x, float y) {
+  Lamp(float x, float y, int id, int intensity, boolean on, int r, int g, int b) {
     this.x = x;
     this.y = y;
+    this.id = id;
+    this.intensity = intensity;
+    this.on = on;
+    this.r = r;
+    this.b = b;
+    this.g = g;
   }  
   
-  void changeColor(float r, float g, float b) {
+  void changeColor(int r, int g, int b) {
     this.r = r;
     this.g = g;
     this.b = b;  

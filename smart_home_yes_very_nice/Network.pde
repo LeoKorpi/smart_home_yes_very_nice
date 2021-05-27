@@ -1,22 +1,52 @@
 import http.requests.*;
-
+import java.lang.Exception;
 class Network {
  
   JSONObject jsonResponse = new JSONObject();
-  String url = "https://udpr.cheadle.se/test/";
-   
+
+  String url = "https://udpr.cheadle.se/";
+  
+  
+
   // Send the change
   void sendChange(Room room, Lamp lamp) {
-   GetRequest get = new GetRequest(url + "sendState");
+   GetRequest get = new GetRequest(url + "?type=set");
     
   }
   
+
+  
+  void changeRGB(int r, int g, int b, int roomId, int lampId) {
+    
+    String arguments = "r=" + r + "&" + 
+                       "g=" + g + "&" + 
+                       "b=" + b + "&" + 
+                       "roomid=" + roomId +  "&" +  
+                       "lampId=" + lampId;
+    GetRequest get = new GetRequest(url + "?type=set&" + arguments);
+    get.send();
+    
+  }
+  
+  
+
   JSONObject getState() {
-    GetRequest getRequest = new GetRequest(url + "getState");
+    GetRequest getRequest = new GetRequest(url + "?type=get");
     getRequest.send();
+    println(getRequest.getContent());
     
-    jsonResponse = parseJSONObject(getRequest.getContent());
+    if(getRequest.getContent() == "ERROR") {
+      println("Something is wrong on the server side");
+    }
+    try {
+   
+      JSONObject jsonResponse = parseJSONObject(getRequest.getContent());
+      
+    } catch (Exception e) {
+      
+      println("ERROR: " + e.getMessage());
     
+    }
     return jsonResponse;   
   }
 }
