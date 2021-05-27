@@ -1,15 +1,20 @@
 class Room {
 
   ArrayList<Lamp> lights;
-  int id;
+  int id = -1;
+  String name = "";
   PImage switchOn, switchOff;  
   boolean switchOver, lampOn = false;
+  boolean on = false;
   
-  Lamp lamp;
+  int topOff = 50;
+  int gap = 10;
   
-  Room() {
+  Room(int id, boolean on, String name) {
+   this.id = id;
+   this.on = on;
+   this.name = name;
    lights = new ArrayList<Lamp>();
-   lamp = new Lamp(857,224);
    switchOn = loadImage("switchOn.png");
    switchOff = loadImage("switchOff.png");
   }
@@ -37,11 +42,18 @@ class Room {
   }
   
  
+
+ 
   void draw(){
     textSize(34);
     fill(255);
-    text("Kök",170,730);
-    lamp.draw();
+    text(this.name,170,730);
+    
+    for(Lamp lamp : lights) {
+      lamp.draw();
+    } 
+    
+    
     
     if(lampOn){
       image(switchOn, 350, 700, 80, 35); 

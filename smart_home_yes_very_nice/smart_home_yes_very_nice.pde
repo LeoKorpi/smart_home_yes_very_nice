@@ -2,38 +2,47 @@ import http.requests.*;
 
 Network network = new Network();
 
-float x, y;
+
 
 View view;
-Lamp lamp;
-
+Control control;
 void setup(){
+  
+  control = new Control();
+  control.retrieveFirstState();
   frameRate(60);
   size(1600,900);
   background(128);  
   
-  x = width/2;
-  y = height/2; 
-  
   view = new View();
-  lamp = new Lamp(x,y);
+
 }
 
 void draw(){ 
-  update(mouseX, mouseY);
-  background(128); 
+  //update(mouseX, mouseY);
+  background(128);
   view.draw();
   
-  if(frameCount % 120 == 0) {
-    
+ //<>// //<>//
+  int r = 0;
+  
+  if(frameCount % 10 == 0) {
+    //JSONArray rooms = network.getState().getJSONArray("rooms");
+    for(Room room : control.rooms) {
+      for(Lamp lamp : room.lights) {
+        network.changeRGB(r++, r++, r++, room.id, lamp.id);
+      }
+    }
+     
+
   }
   //println(frameCount);
 }
 
 void mousePressed(){
   if(view.room.switchOver){
-    view.room.lamp.toggle();
-    view.room.toggle();
+    //view.room.lamp.toggle();
+    //view.room.toggle();
   }
   println("X: " + mouseX + " Y: " + mouseY); //änvänd bara som hjälp för att veta vart saker ska ligga
 }

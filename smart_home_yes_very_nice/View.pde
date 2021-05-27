@@ -1,12 +1,10 @@
 class View{
   
   PImage img;
-  
-  Room room; 
- 
+
+ Room room;
   View(){ 
     img = loadImage("planlösning.png");
-    room = new Room();
   }
  
   void setup(){
@@ -14,6 +12,7 @@ class View{
   
   void draw(){ 
     image(img,600,50,950,800);
+    Room room = control.rooms.get(0);
     room.draw();
   }
  
