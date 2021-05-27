@@ -1,7 +1,9 @@
 class Lamp {
 
   float x, y;
+
   int r = 0, g = 0, b = 0;
+
   int id;
   int intensity = 0;
   boolean on = false;
@@ -20,7 +22,7 @@ class Lamp {
   void changeColor(int r, int g, int b) {
     this.r = r;
     this.g = g;
-    this.g = g;  
+    this.b = b;  
   }
   
   void toggle() {
@@ -38,9 +40,15 @@ class Lamp {
   void draw() {
     if(on){
       strokeWeight(3);
+<<<<<<< HEAD
       fill(this.r,this.g,this.b);
       circle(x,y,30);
       fill(this.r,this.g,this.b);
+=======
+      fill(r,g,b);
+      circle(x,y,30);
+      fill(r,g,b,30);
+>>>>>>> 630019226be5528bc7bcf3c6b78718329eee05c1
       circle(x,y,95);
     } else {
       strokeWeight(3);

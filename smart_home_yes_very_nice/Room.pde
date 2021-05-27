@@ -1,6 +1,7 @@
 class Room {
 
   ArrayList<Lamp> lights;
+
   int id = -1;
   String name = "";
   PImage switchOn, switchOff;  
@@ -10,13 +11,19 @@ class Room {
   int topOff = 50;
   int gap = 10;
   
+  Lamp lamp;
+  LampSwitch lampSwitch;
+
+  
   Room(int id, boolean on, String name) {
    this.id = id;
    this.on = on;
    this.name = name;
    lights = new ArrayList<Lamp>();
+
    switchOn = loadImage("switchOn.png");
    switchOff = loadImage("switchOff.png");
+
   }
  
   void addLamp(Lamp lamp) {
@@ -27,7 +34,7 @@ class Room {
     for(Lamp lamp : lights) {
       lamp.toggle();
     }
-    this.lampOn = !this.lampOn;
+    lampSwitch.toggle();
   }
   
   void turnOff() {
@@ -47,19 +54,11 @@ class Room {
   void draw(){
     textSize(34);
     fill(255);
-    text(this.name,170,730);
-    
-    for(Lamp lamp : lights) {
-      lamp.draw();
-    } 
-    
-    
-    
-    if(lampOn){
-      image(switchOn, 350, 700, 80, 35); 
-    } else {
-      image(switchOff, 350, 700, 80, 35);  
-    }
+
+    text("Kök",170,730);
+    lamp.draw();
+    lampSwitch.draw();
+
   }
  
   /*
@@ -81,7 +80,7 @@ class Room {
   Hall:
     Lampa 1: x: 681 y: 539
   Kök:
-    Lampa 1: x: 852 y: 224
+    Lampa 1: x: 857 y: 224
   */
   
 }

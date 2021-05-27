@@ -2,17 +2,19 @@ import http.requests.*;
 import java.lang.Exception;
 class Network {
  
- 
   JSONObject jsonResponse = new JSONObject();
+
   String url = "https://udpr.cheadle.se/";
   
   
+
   // Send the change
   void sendChange(Room room, Lamp lamp) {
    GetRequest get = new GetRequest(url + "?type=set");
     
   }
   
+
   
   void changeRGB(int r, int g, int b, int roomId, int lampId) {
     
@@ -27,6 +29,7 @@ class Network {
   }
   
   
+
   JSONObject getState() {
     JSONObject jsonResponse = new JSONObject();
     GetRequest getRequest = new GetRequest(url + "?type=get");
