@@ -28,22 +28,26 @@ class Network {
   
   
   JSONObject getState() {
+    JSONObject jsonResponse = new JSONObject();
     GetRequest getRequest = new GetRequest(url + "?type=get");
     getRequest.send();
     println(getRequest.getContent());
     
-    if(getRequest.getContent() == "ERROR") {
+    if(getRequest.getContent() == "ERROR" ) {
       println("Something is wrong on the server side");
     }
+    
+    println(getRequest.getContent());
     try {
    
-      JSONObject jsonResponse = parseJSONObject(getRequest.getContent());
-      
+       jsonResponse = parseJSONObject(getRequest.getContent());
+
     } catch (Exception e) {
       
       println("ERROR: " + e.getMessage());
-    
+      exit();
     }
-    return jsonResponse;   
+   return jsonResponse;   
+
   }
 }

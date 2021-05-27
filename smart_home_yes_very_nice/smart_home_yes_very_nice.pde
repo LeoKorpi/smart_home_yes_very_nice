@@ -23,7 +23,7 @@ void draw(){
   background(128);
   view.draw();
   
- //<>// //<>//
+ //<>//
   int r = 0;
   
   if(frameCount % 10 == 0) {

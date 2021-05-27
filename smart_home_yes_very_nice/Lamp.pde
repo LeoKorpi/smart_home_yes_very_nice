@@ -38,9 +38,9 @@ class Lamp {
   void draw() {
     if(on){
       strokeWeight(3);
-      fill(255,255,0);
+      fill(this.r,this.g,this.b);
       circle(x,y,30);
-      fill(255,255,0,30);
+      fill(this.r,this.g,this.b);
       circle(x,y,95);
     } else {
       strokeWeight(3);

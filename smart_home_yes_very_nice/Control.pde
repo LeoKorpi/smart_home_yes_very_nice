@@ -13,6 +13,13 @@ class Control {
     
   
   }
+  
+  
+  void updateAllLamps() {
+    
+  
+  }
+  
 //Lamp(float x, float y, int id, int intensity, boolean on) {
   void addLampsToRoom(Room room, JSONArray lamps) {
     for(int i = 0; i < lamps.size(); i++){
