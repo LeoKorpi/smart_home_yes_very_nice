@@ -27,7 +27,6 @@ class Network {
     
     post.send();
     
-    println(post.getContent());
     
   }
 

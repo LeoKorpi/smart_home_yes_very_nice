@@ -45,7 +45,6 @@ class Control {
   
 //Lamp(float x, float y, int id, int intensity, boolean on) {
   void addLampsToRoom(Room room, JSONArray lamps) {
-    println(lamps.size());
     for(int i = 0; i < lamps.size(); i++){
       JSONObject lamp = lamps.getJSONObject(i);
       room.addLamp(new Lamp(lamp.getFloat("x"),
@@ -65,7 +64,6 @@ class Control {
     JSONObject state = network.getState();
     
     JSONArray rooms = state.getJSONArray("rooms");
-    println(rooms.size());
     for(int i = 0; i < rooms.size(); i++) {
       JSONObject room = rooms.getJSONObject(i);
       this.rooms.add(new Room(room.getInt("id"), 
