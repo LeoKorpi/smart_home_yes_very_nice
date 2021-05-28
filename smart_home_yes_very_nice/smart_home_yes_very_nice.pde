@@ -52,9 +52,9 @@ void draw(){
   update(mouseX, mouseY);
   background(128); 
   view.draw();
-  view.room.lamp.changeColor(cp5.getController("Red Lighting").getValue(), view.room.lamp.g, view.room.lamp.b);
-  view.room.lamp.changeColor(view.room.lamp.r,cp5.getController("Green Lighting").getValue(), view.room.lamp.b);
-  view.room.lamp.changeColor(view.room.lamp.r, view.room.lamp.g, cp5.getController("Blue Lighting").getValue());
+  network.changeRGB((int)cp5.getController("Red Lighting").getValue(), (int)view.room.lamp.g,(int)view.room.lamp.b, control.rooms.get(0).id, control.rooms.get(0).lights.get(0).id);
+  network.changeRGB((int)view.room.lamp.r,(int)cp5.getController("Green Lighting").getValue(), (int)view.room.lamp.b, control.rooms.get(0).id, control.rooms.get(0).lights.get(0).id);
+  network.changeRGB((int)view.room.lamp.r, (int)view.room.lamp.g, (int)cp5.getController("Blue Lighting").getValue(), control.rooms.get(0).id, control.rooms.get(0).lights.get(0).id);
   
    if(view.room.lamp.on){
     cp5.getController("Red Lighting").setVisible(true); 

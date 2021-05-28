@@ -1,5 +1,6 @@
 class Control {
 
+<<<<<<< Updated upstream
   void toggleRoom() {
     
     
