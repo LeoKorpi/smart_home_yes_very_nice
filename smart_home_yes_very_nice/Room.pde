@@ -12,7 +12,7 @@ class Room {
   int gap = 10;
   
   Lamp lamp;
-  LampSwitch lampSwitch;
+  LampSwitch lampSwitch = new LampSwitch();
 
   
   Room(int id, boolean on, String name) {
@@ -20,6 +20,7 @@ class Room {
    this.on = on;
    this.name = name;
    lights = new ArrayList<Lamp>();
+   
 
    switchOn = loadImage("switchOn.png");
    switchOff = loadImage("switchOff.png");
@@ -56,7 +57,9 @@ class Room {
     fill(255);
 
     text("Kök",170,730);
-    lamp.draw();
+    for(Lamp lamp : lights) {
+      lamp.draw();
+    }
     lampSwitch.draw();
 
   }

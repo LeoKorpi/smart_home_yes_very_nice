@@ -13,8 +13,39 @@ class Control {
     
   
   }
+  
+  
+  
+  void updateLamps() {
+  JSONObject state = network.getState();
+  
+  JSONArray JSONrooms = state.getJSONArray("rooms");
+  
+  for(int roomIndex = 0; roomIndex < JSONrooms.size(); roomIndex++) {
+    JSONObject JSONroom = JSONrooms.getJSONObject(roomIndex);
+    JSONArray JSONlamps = JSONroom.getJSONArray("lamps");
+    
+    for(int lampIndex = 0; lampIndex < JSONlamps.size(); lampIndex++) {
+      Lamp lamp = this.rooms.get(roomIndex).lights.get(lampIndex);
+      JSONObject JSONlamp = JSONlamps.getJSONObject(lampIndex); 
+  
+      lamp.x = JSONlamp.getFloat("x");
+      lamp.y =  JSONlamp.getFloat("y");
+      lamp.intensity = JSONlamp.getInt("intensity");
+      lamp.on = JSONlamp.getBoolean("on");
+      
+      lamp.changeColor(JSONlamp.getInt("r"), JSONlamp.getInt("g"), JSONlamp.getInt("b"));
+      
+    }
+  }
+
+                          
+                            
+  }
+  
 //Lamp(float x, float y, int id, int intensity, boolean on) {
   void addLampsToRoom(Room room, JSONArray lamps) {
+    println(lamps.size());
     for(int i = 0; i < lamps.size(); i++){
       JSONObject lamp = lamps.getJSONObject(i);
       room.addLamp(new Lamp(lamp.getFloat("x"),
@@ -34,7 +65,7 @@ class Control {
     JSONObject state = network.getState();
     
     JSONArray rooms = state.getJSONArray("rooms");
-    
+    println(rooms.size());
     for(int i = 0; i < rooms.size(); i++) {
       JSONObject room = rooms.getJSONObject(i);
       this.rooms.add(new Room(room.getInt("id"), 

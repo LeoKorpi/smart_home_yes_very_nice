@@ -5,22 +5,17 @@ Network network = new Network();
 
 
 ControlP5 cp5;
-View view;
-
 
 View view;
 Control control;
 void setup(){
   
   control = new Control();
-  control.retrieveFirstState();
-  frameRate(60);
+  frameRate(20);
   size(1600,900);
   background(128);  
-  
-  x = width/2;
-  y = height/2; 
-  
+    
+
   cp5 = new ControlP5(this);
   view = new View();  
   
@@ -28,7 +23,7 @@ void setup(){
     .setPosition(280,39)
     .setSize(200,55)
     .setRange(0,255)
-    .setValue(view.room.lamp.r)
+    .setValue(control.rooms.get(0).lights.get(0).r)
     .setColorForeground(color(226,83,83))
     .setColorActive(color(226,83,83))
     ;
@@ -37,7 +32,7 @@ void setup(){
     .setPosition(280,109)
     .setSize(200,55)
     .setRange(0,255)
-    .setValue(view.room.lamp.g)
+    .setValue(control.rooms.get(0).lights.get(0).g)
     .setColorForeground(color(47,209,54))
     .setColorActive(color(47,209,54))
     ;
@@ -46,7 +41,7 @@ void setup(){
     .setPosition(280, 179)
     .setSize(200,55)
     .setRange(0,255)
-    .setValue(view.room.lamp.b)
+    .setValue(control.rooms.get(0).lights.get(0).b)
     .setColorForeground(color(71,94,218))
     .setColorActive(color(71,94,218))
     ;
@@ -57,11 +52,9 @@ void draw(){
   //update(mouseX, mouseY);
   background(128);
   view.draw();
-  view.room.lamp.changeColor(cp5.getController("Red Lighting").getValue(), view.room.lamp.g, view.room.lamp.b);
-  view.room.lamp.changeColor(view.room.lamp.r,cp5.getController("Green Lighting").getValue(), view.room.lamp.b);
-  view.room.lamp.changeColor(view.room.lamp.r, view.room.lamp.g, cp5.getController("Blue Lighting").getValue());
-  
-   if(view.room.lamp.on){
+
+    
+   if(control.rooms.get(0).lights.get(0).on){
     cp5.getController("Red Lighting").setVisible(true); 
     cp5.getController("Green Lighting").setVisible(true); 
     cp5.getController("Blue Lighting").setVisible(true); 
@@ -71,26 +64,29 @@ void draw(){
     cp5.getController("Blue Lighting").setVisible(false); 
   }
   
-  
- //<>// //<>//
-  int r = 0;
-  
-  if(frameCount % 10 == 0) {
-    //JSONArray rooms = network.getState().getJSONArray("rooms");
-    for(Room room : control.rooms) {
-      for(Lamp lamp : room.lights) {
-        network.changeRGB(r++, r++, r++, room.id, lamp.id);
-      }
-    }
-     
 
+  if(frameCount % 5 == 0) {
+    //JSONArray rooms = network.getState().getJSONArray("rooms");
+    control.updateLamps();
+  
   }
-  //println(frameCount);
+  
+  if(frameCount % 20 == 0) {
+    network.changeRGB((int)cp5.getController("Red Lighting").getValue(), 
+                      (int)cp5.getController("Green Lighting").getValue(), 
+                      (int)cp5.getController("Blue Lighting").getValue(), 
+                      control.rooms.get(0).id, 
+                      control.rooms.get(0).lights.get(0).id);
+  }
+  
 }
 
+
+
+
 void mousePressed(){
-  if(view.room.lampSwitch.switchOver){
-    view.room.lamp.toggle();
+  if(control.rooms.get(0).lampSwitch.switchOver){
+    control.rooms.get(0).lights.get(0).toggle();
     view.room.toggle();
   }
   
