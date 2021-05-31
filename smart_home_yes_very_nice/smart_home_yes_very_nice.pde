@@ -49,8 +49,9 @@ void setup(){
 }
 
 void draw(){ 
-  update(mouseX, mouseY);
+  //update(mouseX, mouseY);
   background(128); 
+
   view.draw();
   network.changeRGB((int)cp5.getController("Red Lighting").getValue(), (int)view.room.lamp.g,(int)view.room.lamp.b, control.rooms.get(0).id, control.rooms.get(0).lights.get(0).id);
   network.changeRGB((int)view.room.lamp.r,(int)cp5.getController("Green Lighting").getValue(), (int)view.room.lamp.b, control.rooms.get(0).id, control.rooms.get(0).lights.get(0).id);

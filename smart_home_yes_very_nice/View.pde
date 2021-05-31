@@ -1,7 +1,6 @@
 class View{
   
-  PImage img;
-  
+  PImage img;  
   Room room; 
  
   View(){ 
