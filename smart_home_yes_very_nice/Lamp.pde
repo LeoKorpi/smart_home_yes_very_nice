@@ -1,34 +1,42 @@
 class Lamp {
 
-  float x, y;
+  int x, y;
   float r = 255, g = 255, b = 0;
   int id;
   int intensity = 0;
-  boolean on = false;
-  
-  Lamp(float x, float y) {
+  boolean lampOver, on, selected = false;
+
+  Lamp(int x, int y){
     this.x = x;
     this.y = y;
-  }  
-  
+  }
+
   void changeColor(float r, float g, float b) {
     this.r = r;
-    this.g = g;
+    this.g = g; 
     this.b = b;  
   }
   
   void toggle() {
-    this.on = !this.on;  
+    this.on = !this.on;
   }
   
   void toggleOff() {
-    this.on = false;  
+    this.on = false;
   }
-  
+
   void toggleOn() {
     this.on = true;
   }
-    
+  
+  void select(){
+    this.selected = true;
+  }
+  
+  void unSelect(){
+    this.selected = false; 
+  }
+  
   void draw() {
     if(on){
       strokeWeight(3);
@@ -42,5 +50,4 @@ class Lamp {
       circle(x,y,30);
     }
   }
-  
 }
