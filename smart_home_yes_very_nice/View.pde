@@ -1,7 +1,7 @@
 class View{
   
   PImage img;
-  
+
   Room room; 
   Lamp lamp;
   LampSwitch lampSwitch;
@@ -50,14 +50,13 @@ class View{
         rooms.get(i).addLampSwitch(lampSwitch = new LampSwitch(330,350));  
       }
     }
-  }
  
   void draw(){ 
     image(img,600,50,950,800);
-    
     for(int i = 0; i < rooms.size(); i++){
       rooms.get(i).draw();
     } 
+    //Room room = control.rooms.get(0);
   }
  
 }

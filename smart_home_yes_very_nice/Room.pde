@@ -12,7 +12,8 @@ class Room {
   boolean switchOver, lampOn, on = false;
   
   Lamp lamp;
-  LampSwitch lampSwitch;
+  LampSwitch lampSwitch = new LampSwitch();
+
   
   Room(int id, boolean on, String name) {
     this.id = id;
@@ -57,6 +58,7 @@ class Room {
   }
   */
   
+
   void draw(){
     textSize(34);
     fill(255);
@@ -68,7 +70,7 @@ class Room {
     for (LampSwitch lampSwitch : switches){
       lampSwitch.draw();
     }
- 
-  }
- 
+    
+  } 
+  
 }

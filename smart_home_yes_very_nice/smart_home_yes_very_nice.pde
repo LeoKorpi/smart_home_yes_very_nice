@@ -7,12 +7,14 @@ Network network = new Network();
 ControlP5 cp5;
 View view;
 Lamp lamp;
+//Control control;
 SoundFile on, off;
 
 ArrayList<Lamp> selectedLamp;
 
 void setup(){
-  frameRate(60);
+  //control = new Control();
+  frameRate(20);
   size(1600,900);
   background(128);
 
@@ -23,6 +25,7 @@ void setup(){
   off = new SoundFile(this, "switchOff.wav");
   
   selectedLamp = new ArrayList<Lamp>();
+
   
   cp5.addSlider("Red Lighting")
     .setPosition(280,39)
@@ -58,18 +61,20 @@ void setup(){
 
 void draw(){ 
   update(mouseX, mouseY);
-  background(128); 
+  background(128);
   view.draw();
   if(selectedLamp.size() > 0){
     sliders();
   }
+
   
-  
-  /*  
-  if(frameCount % 120 == 0) {
-    
+  /*
+  if(frameCount % 5 == 0) {
+    //JSONArray rooms = network.getState().getJSONArray("rooms");
+    control.updateLamps();
   }
   */
+  
 }
     
 void mousePressed(){
@@ -111,7 +116,19 @@ void mousePressed(){
       }
     }
   }
-} //<>//
+  
+  /*
+  if(frameCount % 20 == 0) {
+    network.changeRGB((int)cp5.getController("Red Lighting").getValue(), 
+                      (int)cp5.getController("Green Lighting").getValue(), 
+                      (int)cp5.getController("Blue Lighting").getValue(), 
+                      control.rooms.get(0).id, 
+                      control.rooms.get(0).lights.get(0).id);
+  }
+  */
+  
+}
+
 
 void update(int x, int y){
   for(int i = 0; i < view.rooms.size()-1; i++ ){
