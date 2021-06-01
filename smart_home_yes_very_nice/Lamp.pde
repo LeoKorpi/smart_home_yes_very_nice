@@ -1,13 +1,19 @@
 class Lamp {
 
-  float x, y;
 
-  int r = 0, g = 0, b = 0;
-
+  int x, y;
+  float r = 255, g = 255, b = 0;
   int id;
+  //används aldrig, ta bort?
   int intensity = 0;
-  boolean on = false;
+  boolean lampOver, on, selected = false;
 
+  Lamp(int x, int y){
+    this.x = x;
+    this.y = y;
+  }
+
+  /*
   Lamp(float x, float y, int id, int intensity, boolean on, int r, int g, int b) {
     this.x = x;
     this.y = y;
@@ -17,13 +23,13 @@ class Lamp {
     this.r = r;
     this.b = b;
     this.g = g;
-  }  
+  } 
+  */
 
-  void changeColor(int r, int g, int b) {
+  void changeColor(float r, float g, float b) {
     this.r = r;
-    this.g = g;
-    this.b = b;
-  }
+    this.g = g; 
+    this.b = b;  
 
   void toggle() {
     this.on = !this.on;
@@ -36,6 +42,16 @@ class Lamp {
   void toggleOn() {
     this.on = true;
   }
+
+
+  void select(){
+    this.selected = true;
+  }
+  
+  void unSelect(){
+    this.selected = false; 
+  }
+  
 
   void draw() {
     if (on) {
