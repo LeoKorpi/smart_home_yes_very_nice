@@ -1,6 +1,7 @@
 class Control {
 
-ArrayList<Room> rooms;
+/*
+  ArrayList<Room> rooms;
   
   Control() {
     rooms = new ArrayList<Room>();
@@ -105,4 +106,5 @@ ArrayList<Room> rooms;
 
   }
 
+*/
 }

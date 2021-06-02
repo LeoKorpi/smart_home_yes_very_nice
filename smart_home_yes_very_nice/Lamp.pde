@@ -30,6 +30,7 @@ class Lamp {
     this.r = r;
     this.g = g; 
     this.b = b;  
+  }
 
   void toggle() {
     this.on = !this.on;

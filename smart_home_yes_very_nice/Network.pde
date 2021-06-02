@@ -7,7 +7,7 @@ class Network {
    
   String url = "https://udpr.cheadle.se/";
 
-  *
+  /*
   // Send the change
   void sendChange(Room room, Lamp lamp) {
    GetRequest get = new GetRequest(url + "sendState");
