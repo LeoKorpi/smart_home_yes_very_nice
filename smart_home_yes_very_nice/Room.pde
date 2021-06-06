@@ -5,8 +5,7 @@ class Room {
   int id;
   int namePosX = 130;
   int namePosY = 780;
-  int switchPosX = 750;
-  int switchPosY = 350;
+ 
   String name = "";  
   boolean on = false;
   
@@ -15,7 +14,6 @@ class Room {
     this.id = id;
     this.on = on;
     this.name = name;
-    switchPosX -= (id*60);
     namePosY -= (id*60);
     lights = new ArrayList<Lamp>();
   }

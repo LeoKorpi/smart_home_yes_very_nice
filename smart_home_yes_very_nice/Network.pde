@@ -17,15 +17,31 @@ class Network {
     post.send();
   }
 
+  void toggleRoomOff(Room room) {
+    println("Sending toggle: " + room.on + " -> " + !room.on);
+    PostRequest post = new PostRequest(url);
+    post.addData("type", "set");
+    post.addData("roomid", room.id  + "");
+    post.addData("on", false + "");
+    post.send();
+  }
+
+  void toggleRoomOn(Room room) {
+    println("Sending toggle: " + room.on + " -> " + !room.on);
+    PostRequest post = new PostRequest(url);
+    post.addData("type", "set");
+    post.addData("roomid", room.id  + "");
+    post.addData("on", true + "");
+    post.send();
+  }
 
 
-  void changeRGB(int r, int g, int b, int roomId, int lampId) {    
+  void changeRGB(int r, int g, int b, int lampId) {    
     PostRequest post = new PostRequest(url);
     post.addData("type", "set");
     post.addData("r", r + "");
     post.addData("g", g + "");
     post.addData("b", b + "");
-    post.addData("roomid", roomId  + "");
     post.addData("lampid", lampId + "");
     post.send();
   }
