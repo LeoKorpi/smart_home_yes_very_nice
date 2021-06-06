@@ -3,7 +3,7 @@ import java.lang.Exception;
 class Network {
 
   JSONObject jsonResponse = new JSONObject();
-  String url = "https://udpr.cheadle.se/";
+  String url = "https://samuel.ssis.nu/";
 
 
 
