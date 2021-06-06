@@ -1,62 +1,70 @@
-class View{
-  
+class View {
+
   PImage img;
 
-  Room room; 
-  Lamp lamp;
-  LampSwitch lampSwitch;
-  
-  ArrayList<Room> rooms; 
- 
-  View(){ 
+  View() { 
     img = loadImage("planlösning.png");
-    rooms = new ArrayList<Room>();
-    rooms.add(new Room(0, false, "Kök"));
-    rooms.add(new Room(1, false, "Hall"));
-    rooms.add(new Room(2, false, "Vardagsrum"));
-    rooms.add(new Room(3, false, "Sovrum 1"));
-    rooms.add(new Room(4, false, "Sovrum 2"));
-    rooms.add(new Room(5, false, "Sovrum 3"));
-    rooms.add(new Room(6, false, "Sovrum 4"));
-    rooms.add(new Room(7, false, "Släck allt"));
-    
-    for(int i = 0; i < rooms.size(); i++){
-      if(i == 0){ //Köket
-        rooms.get(i).addLamp(lamp = new Lamp(857,224));
-        rooms.get(i).addLampSwitch(lampSwitch = new LampSwitch(750,350));  
-      } else if (i == 1){ //Hallen
-        rooms.get(i).addLamp(lamp = new Lamp(681,539));
-        rooms.get(i).addLampSwitch(lampSwitch = new LampSwitch(690,350));  
-      } else if (i == 2){ //Vardagsrummet
-        rooms.get(i).addLamp(lamp = new Lamp(1132,576));
-        rooms.get(i).addLamp(lamp = new Lamp(1237,791));
-        rooms.get(i).addLamp(lamp = new Lamp(1049,328));
-       rooms.get(i).addLampSwitch(lampSwitch = new LampSwitch(630,350));  
-      } else if (i == 3){ //Sovrum 1
-        rooms.get(i).addLamp(lamp = new Lamp(1298,141));
-        rooms.get(i).addLamp(lamp = new Lamp(1457,320));
-        rooms.get(i).addLampSwitch(lampSwitch = new LampSwitch(570,350));  
-      } else if (i == 4){ //Sovrum 2
-        rooms.get(i).addLamp(lamp = new Lamp(1398,436));
-        rooms.get(i).addLampSwitch(lampSwitch = new LampSwitch(510,350));    
-      } else if (i == 5){ //Sovrum 3
-        rooms.get(i).addLamp(lamp = new Lamp(853,694));
-        rooms.get(i).addLampSwitch(lampSwitch = new LampSwitch(450,350));  
-      } else if (i == 6){ //Sovrum 4
-        rooms.get(i).addLamp(lamp = new Lamp(1139,184));
-        rooms.get(i).addLamp(lamp = new Lamp(1244,134));
-        rooms.get(i).addLampSwitch(lampSwitch = new LampSwitch(390,350));  
-      } else if (i == 7){ //Master control
-        rooms.get(i).addLampSwitch(lampSwitch = new LampSwitch(330,350));  
-      }
+  }
+
+  void draw() { 
+    image(img, 600, 50, 950, 800);
+    for (int i = 0; i < control.rooms.size(); i++) {
+      control.rooms.get(i).draw();
     }
   }
- 
-  void draw(){ 
-    image(img,600,50,950,800);
-    for(int i = 0; i < rooms.size(); i++){
-      rooms.get(i).draw();
-    } 
-    //Room room = control.rooms.get(0);
+  
+void sliders() {
+  control.selectedLamp.get(0).changeColor(
+    cp5.getController("Red Lighting").getValue(), 
+    control.selectedLamp.get(0).g, 
+    control.selectedLamp.get(0).b); 
+  control.selectedLamp.get(0).changeColor(
+    control.selectedLamp.get(0).r, 
+    cp5.getController("Green Lighting").getValue(), 
+    control.selectedLamp.get(0).b); 
+  control.selectedLamp.get(0).changeColor(
+    control.selectedLamp.get(0).r, 
+    control.selectedLamp.get(0).g, 
+    cp5.getController("Blue Lighting").getValue()); 
+
+
+  if (control.selectedLamp.size() > 0) {
+    cp5.getController("Red Lighting").setVisible(true); 
+    cp5.getController("Green Lighting").setVisible(true); 
+    cp5.getController("Blue Lighting").setVisible(true);
   }
+}
+
+void createSliders() {
+  cp5.addSlider("Red Lighting")
+    .setPosition(280, 39)
+    .setSize(200, 55)
+    .setRange(0, 255)
+    .setValue(255) 
+    .setColorForeground(color(226, 83, 83))
+    .setColorActive(color(226, 83, 83))
+    .setVisible(false);
+  ;
+
+  cp5.addSlider("Green Lighting")
+    .setPosition(280, 109)
+    .setSize(200, 55)
+    .setRange(0, 255)
+    .setValue(255)
+    .setColorForeground(color(47, 209, 54))
+    .setColorActive(color(47, 209, 54))
+    .setVisible(false);
+  ;
+
+  cp5.addSlider("Blue Lighting")
+    .setPosition(280, 179)
+    .setSize(200, 55)
+    .setRange(0, 255)
+    .setValue(0)
+    .setColorForeground(color(71, 94, 218))
+    .setColorActive(color(71, 94, 218))
+    .setVisible(false);
+  ;
+}
+
 }
