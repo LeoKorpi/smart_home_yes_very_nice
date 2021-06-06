@@ -1,39 +1,36 @@
-class LampSwitch{
- 
+class LampSwitch {
+
   PImage switchOn, switchOff;  
-  boolean switchOver, lampOn = false;
+  boolean on;
   int x, y;
-  
-  LampSwitch(){
+  int switchOffsetX = 80;
+  int switchOffsetY = 35;
+
+  LampSwitch() {
     switchOn = loadImage("switchOn.png");
     switchOff = loadImage("switchOff.png");
   }
-  
-  LampSwitch(int x, int y){
+
+  LampSwitch(int x, int y) {
     this.x = x;
     this.y = y;
     switchOn = loadImage("switchOn.png");
     switchOff = loadImage("switchOff.png");
   }
-  
-  void toggle(){
-    this.lampOn = !this.lampOn;
-  }
-  
-  void toggleOff() {
-    this.lampOn = false;
+
+
+  boolean isMouseOver(float x, float y) {
+    if ((x > this.x && x < this.x + switchOffsetX) && (y > this.y && y < this.y + switchOffsetY)) {
+      return true;
+    }
+    return false;
   }
 
-  void toggleOn() {
-    this.lampOn = true;
-  }
-  
-  void draw(){
-    if(lampOn){
-      image(switchOn, y, x, 80, 35); 
+  void draw() {
+    if (on) {
+      image(switchOn, x, y, 80, 35);
     } else {
-      image(switchOff, y, x, 80, 35);  
-    } 
+      image(switchOff, x, y, 80, 35);
+    }
   }
-  
 }

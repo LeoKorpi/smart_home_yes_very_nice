@@ -1,1 +1,183 @@
-{"rooms":[{"id":1,"name":"Sovrum 1","on":true,"lamps":[{"id":11,"name":"Lamp 1","r":"211","g":"211","b":"126","intensity":0,"on":true,"x":400,"y":300}]}]}
+{"rooms":
+    [
+        {
+            "id":1,
+            "name":"Kök",
+            "on":false,
+            "lamps": [
+                {
+                    "id":11,
+                    "name":"Lamp 1",
+                    "r":"211",
+                    "g":"211",
+                    "b":"126",
+                    "intensity":0,
+                    "on":false,
+                    "x":857,
+                    "y":224
+                }
+            ]
+        },
+        {
+            "id":2,
+            "name":"Hall",
+            "on":true,
+            "lamps": [
+                {
+                    "id":21,
+                    "name":"Lamp 1",
+                    "r":"211",
+                    "g":"211",
+                    "b":"126",
+                    "intensity":0,
+                    "on":false,
+                    "x":681,
+                    "y":539
+                }
+            ]
+        },
+        {
+            "id":3,
+            "name":"Vardagsrum",
+            "on":false,
+            "lamps": [
+                {
+                    "id":31,
+                    "name":"Lamp 1",
+                    "r":"211",
+                    "g":"211",
+                    "b":"126",
+                    "intensity":0,
+                    "on":true,
+                    "x":1132,
+                    "y":576
+                },
+                {
+                    "id":32,
+                    "name":"Lamp 1",
+                    "r":"211",
+                    "g":"211",
+                    "b":"126",
+                    "intensity":0,
+                    "on":true,
+                    "x":1237,
+                    "y":791
+                },
+                {
+                    "id":33,
+                    "name":"Lamp 1",
+                    "r":"211",
+                    "g":"211",
+                    "b":"126",
+                    "intensity":0,
+                    "on":true,
+                    "x":1049,
+                    "y":328
+                }
+            ]
+        },
+        {
+            "id":4,
+            "name":"Sovrum 1",
+            "on":false,
+            "lamps": [
+                {
+                    "id":41,
+                    "name":"Lamp 1",
+                    "r":"211",
+                    "g":"211",
+                    "b":"126",
+                    "intensity":0,
+                    "on":true,
+                    "x":1298,
+                    "y":141
+                },
+                {
+                    "id":42,
+                    "name":"Lamp 1",
+                    "r":"211",
+                    "g":"211",
+                    "b":"126",
+                    "intensity":0,
+                    "on":true,
+                    "x":1457,
+                    "y":320
+                }
+            ]
+        },
+        {
+            "id":5,
+            "name":"Sovrum 2",
+            "on":true,
+            "lamps": [
+                {
+                    "id":51,
+                    "name":"Lamp 1",
+                    "r":"211",
+                    "g":"211",
+                    "b":"126",
+                    "intensity":0,
+                    "on":true,
+                    "x":1398,
+                    "y":436
+                }
+            ]
+        },
+        {
+            "id":6,
+            "name":"Sovrum 3",
+            "on":true,
+            "lamps": [
+                {
+                    "id":61,
+                    "name":"Lamp 1",
+                    "r":"211",
+                    "g":"211",
+                    "b":"126",
+                    "intensity":0,
+                    "on":true,
+                    "x":853,
+                    "y":694
+                }
+            ]
+        },
+        {
+            "id":7,
+            "name":"Sovrum 4",
+            "on":true,
+            "lamps": [
+                {
+                    "id":71,
+                    "name":"Lamp 1",
+                    "r":"211",
+                    "g":"211",
+                    "b":"126",
+                    "intensity":0,
+                    "on":true,
+                    "x":1139,
+                    "y":184
+                },
+                {
+                    "id":72,
+                    "name":"Lamp 1",
+                    "r":"211",
+                    "g":"211",
+                    "b":"126",
+                    "intensity":0,
+                    "on":true,
+                    "x":1244,
+                    "y":134
+                }
+            ]
+        },
+        {
+            "id":8,
+            "name":"Släck allt",
+            "on":true,
+            "lamps": [
+
+            ]
+        } 
+
+    ]
+}
