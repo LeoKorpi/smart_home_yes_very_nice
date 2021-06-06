@@ -13,22 +13,14 @@ class View {
     }
   }
   
+  
+void hideSliders() {
+
+}
+
 void sliders() {
-  control.selectedLamp.get(0).changeColor(
-    cp5.getController("Red Lighting").getValue(), 
-    control.selectedLamp.get(0).g, 
-    control.selectedLamp.get(0).b); 
-  control.selectedLamp.get(0).changeColor(
-    control.selectedLamp.get(0).r, 
-    cp5.getController("Green Lighting").getValue(), 
-    control.selectedLamp.get(0).b); 
-  control.selectedLamp.get(0).changeColor(
-    control.selectedLamp.get(0).r, 
-    control.selectedLamp.get(0).g, 
-    cp5.getController("Blue Lighting").getValue()); 
 
-
-  if (control.selectedLamp.size() > 0) {
+  if (!control.selectedLamp.isEmpty()) {
     cp5.getController("Red Lighting").setVisible(true); 
     cp5.getController("Green Lighting").setVisible(true); 
     cp5.getController("Blue Lighting").setVisible(true);

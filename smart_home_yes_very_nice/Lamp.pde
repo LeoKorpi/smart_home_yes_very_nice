@@ -31,6 +31,14 @@ class Lamp {
 
   }
 
+  boolean mouseIsOver(int x, int y) {
+    if(x < this.x + (95 / 2) && x > this.x - (95 / 2) && 
+       y < this.y + (95 / 2) && y > this.y - (95 / 2)) {
+      return true;  
+     }
+        
+    return false;
+  }
   void select() {
     this.selected = true;
   }
@@ -44,9 +52,11 @@ class Lamp {
     if (on) {
       strokeWeight(3);
       fill(this.r, this.g, this.b);
-      circle(x, y, 30);
-      fill(this.r, this.g, this.b);
       circle(x, y, 95);
+      
+      fill(this.r, this.g, this.b);
+      circle(x, y, 30);
+
     } else {
       strokeWeight(3);
       fill(128);

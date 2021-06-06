@@ -29,34 +29,32 @@ void setup() {
 void draw() { 
   background(128);
   view.draw();
-  
+
   if (control.selectedLamp.size() > 0) {
     view.sliders();
+
+    network.changeRGB(
+      (int)cp5.getController("Red Lighting").getValue(), 
+      (int)cp5.getController("Green Lighting").getValue(), 
+      (int)cp5.getController("Blue Lighting").getValue(), 
+      control.selectedLamp.get(0).id);
   }
   
+  if(frameCount % 60 == 0)
+  {
+   
+  }
+
+
 
   if (frameCount % 5 == 0) {
     control.updateLamps();
   }
-  
-  
-
-
-
 }
 
 void mousePressed() {
 
 
   control.checkForLampSwitchActivation();
-  
-  if (frameCount % 20 == 0) {       
-      network.changeRGB(
-      (int)cp5.getController("Red Lighting").getValue(), 
-      (int)cp5.getController("Green Lighting").getValue(), 
-      (int)cp5.getController("Blue Lighting").getValue(),
-      control.rooms.get(0).id, 
-      control.rooms.get(0).lights.get(0).id);
-    
-  }
+  control.checkForLampSelection();
 }

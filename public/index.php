@@ -19,25 +19,25 @@ function updateState() {
     $result = $json;
 
     
-    if(isset($_REQUEST['roomid']) && isset($_REQUEST["lampid"])) {
+    if(isset($_REQUEST["lampid"])) {
         if(isset($_REQUEST["r"]) && isset($_REQUEST["g"]) && isset($_REQUEST["b"])) {
             
             $roomIndex = 0;
             
             foreach($json["rooms"] as $room) {
-                if($_REQUEST["roomid"] == $room["id"]) {
-                    $lampIndex = 0;
-                    foreach($room["lamps"] as $lamp) {
-                        if($_REQUEST["lampid"] == $lamp["id"]) {
-                            $lamp["r"] = $_REQUEST["r"];
-                            $lamp["g"] = $_REQUEST["g"];
-                            $lamp["b"] = $_REQUEST["b"];
-                            unset($result["rooms"][$roomIndex][$lampIndex]);
-                            $result["rooms"][$roomIndex]["lamps"][$lampIndex] = $lamp;
-                        }
-                        $lampIndex++;
+                
+                $lampIndex = 0;
+                foreach($room["lamps"] as $lamp) {
+                    if($_REQUEST["lampid"] == $lamp["id"]) {
+                        $lamp["r"] = $_REQUEST["r"];
+                        $lamp["g"] = $_REQUEST["g"];
+                        $lamp["b"] = $_REQUEST["b"];
+                        unset($result["rooms"][$roomIndex][$lampIndex]);
+                        $result["rooms"][$roomIndex]["lamps"][$lampIndex] = $lamp;
                     }
+                    $lampIndex++;
                 }
+            
                 $roomIndex++;
             }
         }

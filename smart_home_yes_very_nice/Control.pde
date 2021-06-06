@@ -34,7 +34,13 @@ class Control {
   void toggleRoom(Room room) {
     network.toggleRoom(room);
   }
-
+  void toggleRoomOn(Room room) {
+    network.toggleRoomOn(room);
+  }  
+  
+  void toggleRoomOff(Room room) {
+    network.toggleRoomOff(room);
+  }
   
   void checkForLampSwitchActivation() {
     println(mouseX + " : " + mouseY);
@@ -43,21 +49,34 @@ class Control {
     Room currentRoom = control.rooms.get(i);
    
     if (currentRoom.lampSwitch.isMouseOver(mouseX, mouseY)) {
-      
-      println("Is over : " + currentRoom.id + ":" + currentRoom.name + "\n" + 
-      "x: " + currentRoom.lampSwitch.x + " -> " + mouseX + " <- " + (currentRoom.lampSwitch.x + currentRoom.lampSwitch.switchOffsetX) + "\n" + 
-      "y: " + currentRoom.lampSwitch.y + " -> " + mouseY + " <- " + (currentRoom.lampSwitch.y + currentRoom.lampSwitch.switchOffsetY) + "\n");
 
-      for (int light = 0; light < currentRoom.lights.size(); light++) {
-        if (currentRoom.on) {          
-          currentRoom.lampSwitch.on = true;
-          on.play();
-        } else {
-          currentRoom.lampSwitch.on = false;
-          off.play();
-        }
+ 
+      if (currentRoom.on) {          
+        currentRoom.lampSwitch.on = true;
+        on.play();
+      } else {
+        currentRoom.lampSwitch.on = false;
+        off.play();
       }
-      control.toggleRoom(currentRoom); 
+      
+      if(currentRoom.id == 8) {
+       
+       for(int room = 0; room < control.rooms.size(); room++) {
+         if(currentRoom.on) {
+           control.toggleRoomOff(rooms.get(room));
+         }
+         else 
+         {
+           control.toggleRoomOn(rooms.get(room));
+         }
+         
+       }
+       
+      } 
+      else 
+      {
+        control.toggleRoom(currentRoom);
+      }
     }
   } 
   println("============="); 
@@ -106,6 +125,23 @@ class Control {
         lamp.getInt("g"), 
         lamp.getInt("b")
         ));
+    }
+  }
+  
+  void checkForLampSelection() {
+  
+    for(int room = 0; room < rooms.size(); room++) {  
+      for(int light = 0; light < this.rooms.get(room).lights.size(); light++) {
+        Lamp lamp = this.rooms.get(room).lights.get(light); 
+        if(lamp.mouseIsOver(mouseX, mouseY)) {
+          println(this.rooms.get(room).name + " " + selectedLamp.size());
+          if(selectedLamp.size() > 0) {
+            selectedLamp.clear();  
+          }
+         
+          selectedLamp.add(lamp);
+        }  
+      }
     }
   }
 
