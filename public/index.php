@@ -58,35 +58,42 @@ function updateState() {
 }
 
 
-if($_GET['type'] == "get") {
+if(isset($_GET['type'])) {
 
-    $file = file_get_contents("state.json");
+    if($_GET['type'] == "get") {
 
-    if(!$file) {
-        http_response_code(500);
+        $file = file_get_contents("state.json");
+    
+        if(!$file) {
+            http_response_code(500);
+            die("ERROR");
+        }
+    
+        http_response_code(200);
+        
+        echo $file;
+        
+    
+    }
+}
+
+if(isset($_POST['type'])) {
+    if($_POST['type'] == "set") {
+        $json = json_encode(updateState());
+        
+        $fileToWrite = fopen("state.json", "w+");
+        fwrite($fileToWrite, $json);
+        fclose($fileToWrite);
+    }
+    
+    
+    if($_POST["type"] != "set" && $_GET["type"] != "get") {
+        //http_response_code(500);
         echo "ERROR";
     }
-
-    http_response_code(200);
     
-    echo $file;
-    
-
 }
 
-if($_POST['type'] == "set") {
-    $json = json_encode(updateState());
-    
-    $fileToWrite = fopen("state.json", "w+");
-    fwrite($fileToWrite, $json);
-    fclose($fileToWrite);
-}
-
-
-if($_POST["type"] != "set" && $_GET["type"] != "get") {
-    //http_response_code(500);
-    echo "ERROR";
-}
 
 return 0;
 
